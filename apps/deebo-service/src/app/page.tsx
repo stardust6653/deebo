@@ -1,4 +1,4 @@
-import AuthBanner from "@/components/common/Auth/AuthBanner";
+import AuthBanner from "@/components/common/\bauth/AuthBanner";
 import LoginForm from "@/components/pages/Login/LoginForm";
 
 export default function Home() {

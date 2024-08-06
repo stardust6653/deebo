@@ -1,6 +1,6 @@
 "use client";
 
-import AuthForm from "@/components/common/Auth/AuthForm";
+import AuthForm from "@/components/common/\bauth/AuthForm";
 import Input from "@/components/common/universal/Input";
 import LabelGroup from "@/components/common/universal/LabelGroup";
 import SubmitButton from "@/components/common/universal/SubmitButton";
