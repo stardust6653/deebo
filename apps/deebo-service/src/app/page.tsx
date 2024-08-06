@@ -1,7 +1,13 @@
+import AuthBanner from "@/components/common/Auth/AuthBanner";
+import LoginForm from "@/components/pages/Login/LoginForm";
+
 export default function Home() {
   return (
-    <main>
-      <h1>hello world</h1>
-    </main>
+    <div className="flex justify-center items-center bg-blue-600 h-[100vh] w-full">
+      <main className="flex">
+        <AuthBanner />
+        <LoginForm />
+      </main>
+    </div>
   );
 }
