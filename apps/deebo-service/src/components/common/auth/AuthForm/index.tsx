@@ -5,9 +5,10 @@ interface Props {
   children: ReactNode;
   condition: boolean;
   text: string;
+  onClick: () => void;
 }
 
-const AuthForm = ({ children, condition, text }: Props) => {
+const AuthForm = ({ children, condition, text, onClick }: Props) => {
   return (
     <div className="flex justify-center items-center ml-48">
       <div className="min-h-[800px] min-w-[500px] bg-white rounded-3xl p-12 flex flex-col justify-between">
@@ -16,7 +17,7 @@ const AuthForm = ({ children, condition, text }: Props) => {
           {children}
         </div>
 
-        <SubmitButton text={text} condition={condition} />
+        <SubmitButton text={text} condition={condition} onClick={onClick} />
       </div>
     </div>
   );

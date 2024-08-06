@@ -37,7 +37,11 @@ const LoginForm = () => {
   };
 
   return (
-    <AuthForm condition={loginCondition} text="로그인">
+    <AuthForm
+      condition={loginCondition}
+      text="로그인"
+      onClick={() => console.log("click")}
+    >
       <div>
         <p className="text-2xl font-normal mb-4">로그인</p>
         <div className="flex mb-8">
@@ -53,7 +57,7 @@ const LoginForm = () => {
         <div className="mb-8">
           <div className="mb-4">
             <LabelGroup title="이메일" errorMessage={emailErrorMessage()} />
-            <Input type="email" setState={setEmail} />
+            <Input id="email" type="email" setState={setEmail} />
           </div>
 
           <div>
@@ -61,7 +65,7 @@ const LoginForm = () => {
               title="비밀번호"
               errorMessage={passwordErrorMessage()}
             />
-            <Input type="password" setState={setPassword} />
+            <Input id="password" type="password" setState={setPassword} />
           </div>
         </div>
       </div>

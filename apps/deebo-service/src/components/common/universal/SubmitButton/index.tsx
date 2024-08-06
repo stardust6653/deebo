@@ -3,9 +3,10 @@ import React from "react";
 interface Props {
   text: string;
   condition: boolean;
+  onClick: () => void;
 }
 
-const SubmitButton = ({ text, condition }: Props) => {
+const SubmitButton = ({ text, condition, onClick }: Props) => {
   const disabledColor = () => {
     if (condition) {
       return "bg-blue-500  text-white ";
@@ -18,7 +19,7 @@ const SubmitButton = ({ text, condition }: Props) => {
     <button
       className={`w-full p-2 rounded-md text-white ${disabledColor()}`}
       disabled={!condition}
-      onClick={() => console.log("clicked")}
+      onClick={onClick}
     >
       {text}
     </button>

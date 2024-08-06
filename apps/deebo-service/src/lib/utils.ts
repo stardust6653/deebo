@@ -17,4 +17,40 @@ export const isValidPassword = (password: string) => {
   return passwordRegex.test(password);
 };
 
+export const isValidNickname = (nickname: string) => {
+  const nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ가-힣]{2,15}$/;
+  return nicknameRegex.test(nickname);
+};
+
+export const isValidBirthday = (birthday: string) => {
+  const today = new Date();
+  const birthdayDate = new Date(birthday);
+
+  if (today < birthdayDate) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export const isValidOver14 = (birthday: string) => {
+  // 현재 날짜
+  const today = new Date();
+
+  // 생년월일을 Date 객체로 변환
+  const birth = new Date(birthday);
+
+  // 나이 계산
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+
+  // 생일이 아직 지나지 않았으면 나이에서 1을 뺌
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+
+  // 14세 이상인지 확인
+  return age >= 14;
+};
+
 //
