@@ -5,9 +5,12 @@ import Input from "@/components/common/universal/Input";
 import LabelGroup from "@/components/common/universal/LabelGroup";
 import SubmitButton from "@/components/common/universal/SubmitButton";
 import { isValidEmail, isValidPassword } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const LoginForm = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,7 +42,12 @@ const LoginForm = () => {
         <p className="text-2xl font-normal mb-4">로그인</p>
         <div className="flex mb-8">
           <p className="mr-2 font-light">신규사용자 이신가요?</p>
-          <button className="text-blue-500">회원가입 하러가기</button>
+          <button
+            className="text-blue-500"
+            onClick={() => router.push("/join")}
+          >
+            회원가입 하러가기
+          </button>
         </div>
 
         <div className="mb-8">
