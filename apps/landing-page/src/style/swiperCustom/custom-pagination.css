@@ -1,0 +1,14 @@
+.custom-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.custom-bullet-active {
+  background: #007aff;
+  transform: scale(1.3);
+}
