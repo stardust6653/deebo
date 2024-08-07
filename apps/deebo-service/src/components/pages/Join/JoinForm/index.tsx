@@ -4,8 +4,11 @@ import AuthForm from "@/components/common/auth/AuthForm";
 import React, { useState } from "react";
 import SelectUserTypeForm from "../SelectUserTypeForm";
 import SignInForm from "../SignInForm";
+import { useRouter } from "next/navigation";
 
 const JoinForm = () => {
+  const router = useRouter();
+
   const [userType, setUserType] = useState("");
   const [typeSelected, setTypeSelected] = useState(false);
 
@@ -43,12 +46,30 @@ const JoinForm = () => {
   };
 
   const joinData = {
-    nickName: nickName,
+    type: userType,
+    nickname: nickName,
     email: email,
     password: password,
     birthday: birthday,
     gender: gender,
     userType: userType,
+  };
+
+  console.log(joinData);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const response = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(joinData),
+    });
+
+    if (response.ok) {
+      router.push("/auth/signin");
+    } else {
+      // Handle error
+    }
   };
 
   console.log(joinData);
@@ -69,12 +90,13 @@ const JoinForm = () => {
         <AuthForm
           condition={signInFormCondition}
           text="가입"
-          onClick={onNextClick}
+          onClick={handleSubmit}
         >
           <SignInForm
             setter={setter}
             states={states}
             setSignInFormCondition={setSignInFormCondition}
+            handleSubmit={handleSubmit}
           />
         </AuthForm>
       )}

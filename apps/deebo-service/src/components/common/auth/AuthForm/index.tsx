@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
   condition: boolean;
   text: string;
-  onClick: () => void;
+  onClick: any;
 }
 
 const AuthForm = ({ children, condition, text, onClick }: Props) => {

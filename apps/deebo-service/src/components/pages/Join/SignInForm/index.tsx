@@ -27,9 +27,15 @@ interface Props {
     nickName: string;
   };
   setSignInFormCondition: Dispatch<SetStateAction<boolean>>;
+  handleSubmit: (e: React.FormEvent) => void;
 }
 
-const SignInForm = ({ setter, states, setSignInFormCondition }: Props) => {
+const SignInForm = ({
+  setter,
+  states,
+  setSignInFormCondition,
+  handleSubmit,
+}: Props) => {
   const [nickNameDoubleCheck, setNickNameDoubleCheck] = useState(false);
 
   const signInCondition =
@@ -91,7 +97,7 @@ const SignInForm = ({ setter, states, setSignInFormCondition }: Props) => {
   console.log(signInCondition);
 
   return (
-    <div>
+    <form>
       <p className="text-2xl font-normal mb-4">회원가입</p>
 
       <div className="mb-8">
@@ -149,7 +155,7 @@ const SignInForm = ({ setter, states, setSignInFormCondition }: Props) => {
           <Input id="birthday" type="date" setState={setter.setBirthday} />
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
