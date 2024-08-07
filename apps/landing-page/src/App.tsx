@@ -2,7 +2,6 @@ import { Twitter, Instagram, Facebook } from "lucide-react";
 import Header from "./components/common/Header";
 import MainSectionContainer from "./components/main/MainSectionContainer";
 import BackgroundAsset from "./components/main/BackgroundAsset";
-import CatchPhrase from "./components/main/CatchPhrase";
 import SectionTitle from "./components/common/SectionTitle";
 import WhySectionContainer from "./components/whySection/WhySectionContainer";
 import { useScrollBackground } from "./hook/useScrollBackgroud";
@@ -19,6 +18,8 @@ import QnASectionContainer from "./components/QnASection/QnASectionContainer";
 import QnAItemList from "./components/QnASection/QnAItemList";
 import SubscriptionInfoSectionContainer from "./components/SubscriptionInfoSection/SubscriptionInfoSectionContainer";
 import PlanCardList from "./components/SubscriptionInfoSection/PlanCardList";
+import { CatchPhrase } from "@repo/ui/catchPhrase";
+import { ArrowRight } from "lucide-react";
 
 function App() {
   const type = "MAIN";
@@ -34,7 +35,11 @@ function App() {
           <Header />
           <MainSectionContainer>
             <BackgroundAsset />
-            <CatchPhrase />
+            <CatchPhrase>
+              <button className="bg-white text-blue-900 px-8 py-3 rounded-full font-bold flex items-center mx-auto hover:bg-blue-100 transition-colors">
+                시작하기 <ArrowRight className="ml-2" />
+              </button>
+            </CatchPhrase>
           </MainSectionContainer>
 
           <WhySectionContainer>

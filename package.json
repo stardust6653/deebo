@@ -5,7 +5,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "build:ui": "yarn workspace @repo/ui build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -18,12 +19,12 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "dependencies": {
     "react-icons": "^5.2.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
