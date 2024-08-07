@@ -47,14 +47,14 @@ const SelectUserTypeForm = ({ userType, setUserType }: Props) => {
           onClick={() => onUserTypeClick(user)}
         >
           <div
-            className={`flex flex-col ${user.value === userType && "text-white"}`}
+            className={`flex flex-col text-blue-950  ${user.value === userType && "text-white"}`}
           >
             <p className="text-2xl mb-4">{user.title}</p>
             <p>{user.description}</p>
           </div>
 
           <div
-            className={` text-2xl w-[50px] h-[50px] flex justify-center items-center text-white rounded-[100%] ${user.value === userType ? "bg-white text-blue-400" : "bg-blue-200"}`}
+            className={` text-2xl w-[50px] h-[50px] flex justify-center items-center  rounded-[100%] ${user.value === userType ? "bg-white" : "bg-blue-200 "} ${user.value === userType ? "text-blue-400" : "text-white"}`}
           >
             {user.icon}
           </div>

@@ -133,6 +133,7 @@ const SignInForm = ({ setter, states, setSignInFormCondition }: Props) => {
             {genderList.map((gender) => {
               return (
                 <div
+                  key={gender}
                   onClick={() => setter.setGender(gender)}
                   className={`text-center border mt-2 py-2 rounded-lg cursor-pointer ${gender === states.gender && "bg-blue-500 text-white"}`}
                 >
