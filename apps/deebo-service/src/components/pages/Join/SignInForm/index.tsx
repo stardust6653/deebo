@@ -36,7 +36,45 @@ const SignInForm = ({
   setSignInFormCondition,
   handleSubmit,
 }: Props) => {
-  const [nickNameDoubleCheck, setNickNameDoubleCheck] = useState(false);
+  const [nickNameDoubleCheck, setNickNameDoubleCheck] = useState<
+    boolean | null
+  >(null);
+
+  const checkNicknameDuplicate = async () => {
+    try {
+      const response = await fetch("/api/auth/check-nickname", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nickname: states.nickName }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      return true;
+    } catch (error) {}
+  };
+
+  const handleCheckNickname = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (states.nickName.length <= 1) {
+      alert("닉네임은 2글자 이상 입력해주세요.");
+    } else {
+      const isDuplicate = await checkNicknameDuplicate();
+      if (isDuplicate) {
+        alert("이미 사용 중인 닉네임입니다.");
+        setNickNameDoubleCheck(true);
+      } else {
+        alert("사용 가능한 닉네임입니다.");
+        setNickNameDoubleCheck(false);
+      }
+    }
+  };
+
+  console.log(nickNameDoubleCheck);
 
   const signInCondition =
     isValidNickname(states.nickName) &&
@@ -47,7 +85,8 @@ const SignInForm = ({
     states.gender !== "" &&
     isValidBirthday(states.birthday) &&
     isValidOver14(states.birthday) &&
-    !nickNameDoubleCheck;
+    !nickNameDoubleCheck &&
+    nickNameDoubleCheck !== null;
 
   const emailErrorMessage = () => {
     if (!isValidEmail(states.email) && states.email.length > 0) {
@@ -92,7 +131,26 @@ const SignInForm = ({
 
   useEffect(() => {
     setSignInFormCondition(signInCondition);
-  }, [signInCondition]);
+  }, [signInCondition, nickNameDoubleCheck]);
+
+  useEffect(() => {
+    setNickNameDoubleCheck(null);
+  }, [states.nickName]);
+
+  const possible = nickNameDoubleCheck !== null && !nickNameDoubleCheck;
+  const impossible = nickNameDoubleCheck !== null && nickNameDoubleCheck;
+
+  const buttonStyle = () => {
+    if (nickNameDoubleCheck === null) {
+      return "border bg-blue-400 ml-2 w-[100px] text-white rounded-md text-sm";
+    }
+    if (impossible) {
+      return "border bg-red-400 ml-2 w-[100px] text-white rounded-md text-sm";
+    }
+    if (!impossible) {
+      return "border ml-2 w-[100px] text-white rounded-md text-sm bg-green-500";
+    }
+  };
 
   console.log(signInCondition);
 
@@ -110,8 +168,10 @@ const SignInForm = ({
           <LabelGroup title="닉네임" errorMessage={nickNameErrorMessage()} />
           <div className="flex">
             <Input id="nickName" type="text" setState={setter.setNickName} />
-            <button className="border bg-blue-400 ml-2 w-[100px] text-white rounded-md text-sm">
-              중복확인
+            <button onClick={handleCheckNickname} className={buttonStyle()}>
+              {nickNameDoubleCheck === null && "중복확인"}
+              {possible && "사용가능"}
+              {impossible && "사용불가"}
             </button>
           </div>
         </div>

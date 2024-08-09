@@ -24,25 +24,25 @@ const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
   },
 });
 
-async function deleteAllUsers() {
-  const { data: users, error: fetchError } =
-    await supabase.auth.admin.listUsers();
+// async function deleteAllUsers() {
+//   const { data: users, error: fetchError } =
+//     await supabase.auth.admin.listUsers();
 
-  if (fetchError) {
-    console.error("Error fetching users:", fetchError);
-    return;
-  }
+//   if (fetchError) {
+//     console.error("Error fetching users:", fetchError);
+//     return;
+//   }
 
-  for (const user of users.users) {
-    const { error: deleteError } = await supabase.auth.admin.deleteUser(
-      user.id
-    );
-    if (deleteError) {
-      console.error(`Error deleting user ${user.id}:`, deleteError);
-    } else {
-      console.log(`Deleted user ${user.id}`);
-    }
-  }
-}
+//   for (const user of users.users) {
+//     const { error: deleteError } = await supabase.auth.admin.deleteUser(
+//       user.id
+//     );
+//     if (deleteError) {
+//       console.error(`Error deleting user ${user.id}:`, deleteError);
+//     } else {
+//       console.log(`Deleted user ${user.id}`);
+//     }
+//   }
+// }
 
-deleteAllUsers();
+// deleteAllUsers();

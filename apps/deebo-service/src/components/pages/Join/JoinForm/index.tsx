@@ -55,8 +55,6 @@ const JoinForm = () => {
     userType: userType,
   };
 
-  console.log(joinData);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await fetch("/api/auth/signup", {
