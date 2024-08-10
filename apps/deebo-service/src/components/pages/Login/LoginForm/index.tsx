@@ -7,6 +7,7 @@ import SubmitButton from "@/components/common/universal/SubmitButton";
 import { isValidEmail, isValidPassword } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { getSession, signIn as nextAuthSignIn } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -36,11 +37,50 @@ const LoginForm = () => {
     return "";
   };
 
+  async function signIn(email: string, password: string) {
+    try {
+      // 먼저 커스텀 API를 호출하여 Supabase 인증을 수행
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error);
+      }
+
+      const data = await response.json();
+
+      // NextAuth 세션 생성
+      const result = await nextAuthSignIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        throw new Error(result.error);
+      } else if (result?.ok) {
+        console.log("로그인 완료");
+        router.push("/create-profile");
+      }
+
+      return data;
+    } catch (error: any) {
+      console.error("Login error:", error.message);
+      throw error;
+    }
+  }
+
   return (
     <AuthForm
       condition={loginCondition}
       text="로그인"
-      onClick={() => console.log("click")}
+      onClick={() => signIn(email, password)}
     >
       <div>
         <p className="text-2xl font-normal mb-4">로그인</p>
