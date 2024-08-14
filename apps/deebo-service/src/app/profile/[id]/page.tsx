@@ -11,6 +11,7 @@ import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import YouTubePreview from "@/components/common/universal/YouTubePreview";
 import YouTubeAlbum from "@/components/pages/Profile/YouTubeAlbum";
 import NewsCard from "@/components/pages/Profile/NewsCard";
+import ReleasedAlbumList from "@/components/pages/Profile/ReleasedAlbumList";
 
 interface PostPageProps {
   params: { category: string; id: string };
@@ -76,65 +77,7 @@ const ProfilePage = ({ params }: PostPageProps) => {
           </div>
         </div>
 
-        <div className="px-[40px] mt-10">
-          <h2 className="text-2xl font-bold mb-4">Released Album</h2>
-          <HorizontalScrollContainer>
-            <div
-              className="flex"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>{" "}
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>{" "}
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>{" "}
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>{" "}
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>{" "}
-              <div className="mr-8">
-                <div className="w-[180px] h-[180px] bg-gray-300 rounded-lg " />
-                <div className="px-1">
-                  <div className="mt-2 font-medium">대충 앨범 1</div>
-                  <div className="text-sm text-gray-400">2021.01.01</div>
-                </div>
-              </div>
-            </div>
-          </HorizontalScrollContainer>
-        </div>
+        <ReleasedAlbumList />
 
         <div className="px-[40px] mt-10">
           <h2 className="text-2xl font-bold mb-4">Unreleased Album</h2>
