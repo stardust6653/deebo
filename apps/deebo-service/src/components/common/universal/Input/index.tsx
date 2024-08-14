@@ -4,9 +4,10 @@ interface Props {
   id: string;
   type: "text" | "password" | "email" | "number" | "date";
   setState: Dispatch<SetStateAction<string>>;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ type, id, setState }: Props) => {
+const Input = ({ type, id, setState, onKeyDown }: Props) => {
   const maxLength = () => {
     switch (id) {
       case "email":
@@ -41,6 +42,7 @@ const Input = ({ type, id, setState }: Props) => {
       onChange={(e) => setState(e.target.value)}
       maxLength={maxLength()}
       minLength={minLength()}
+      onKeyDown={onKeyDown}
     />
   );
 };
