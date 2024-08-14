@@ -6,7 +6,7 @@ import LabelGroup from "@/components/common/universal/LabelGroup";
 import SubmitButton from "@/components/common/universal/SubmitButton";
 import { isValidEmail, isValidPassword } from "@/lib/utils";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getSession, signIn as nextAuthSignIn } from "next-auth/react";
 
 const LoginForm = () => {
@@ -14,6 +14,8 @@ const LoginForm = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [loginError, setLoginError] = useState(false);
 
   const loginCondition = isValidEmail(email) && isValidPassword(password);
 
@@ -23,6 +25,9 @@ const LoginForm = () => {
     }
     if (!loginCondition && email.length === 0 && password.length !== 0) {
       return "이메일을 입력해주세요.";
+    }
+    if (loginError) {
+      return "이메일 또는 비밀번호가 일치하지 않습니다.";
     }
     return "";
   };
@@ -35,6 +40,16 @@ const LoginForm = () => {
       return "비밀번호를 입력해주세요.";
     }
     return "";
+  };
+
+  useEffect(() => {
+    setLoginError(false);
+  }, [password, email]);
+
+  const onEnterKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      signIn(email, password);
+    }
   };
 
   async function signIn(email: string, password: string) {
@@ -50,6 +65,7 @@ const LoginForm = () => {
 
       if (!response.ok) {
         const error = await response.json();
+        setLoginError(true);
         throw new Error(error.error);
       }
 
@@ -97,7 +113,12 @@ const LoginForm = () => {
         <div className="mb-8">
           <div className="mb-4">
             <LabelGroup title="이메일" errorMessage={emailErrorMessage()} />
-            <Input id="email" type="email" setState={setEmail} />
+            <Input
+              id="email"
+              type="email"
+              setState={setEmail}
+              onKeyDown={onEnterKeyDown}
+            />
           </div>
 
           <div>
@@ -105,7 +126,12 @@ const LoginForm = () => {
               title="비밀번호"
               errorMessage={passwordErrorMessage()}
             />
-            <Input id="password" type="password" setState={setPassword} />
+            <Input
+              id="password"
+              type="password"
+              setState={setPassword}
+              onKeyDown={onEnterKeyDown}
+            />
           </div>
         </div>
       </div>
