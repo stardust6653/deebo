@@ -12,122 +12,31 @@ import YouTubePreview from "@/components/common/universal/YouTubePreview";
 import YouTubeAlbum from "@/components/pages/Profile/YouTubeAlbum";
 import NewsCard from "@/components/pages/Profile/NewsCard";
 import ReleasedAlbumList from "@/components/pages/Profile/ReleasedAlbumList";
+import ProfileHeader from "@/components/pages/Profile/ProfileHeader";
+import NameSpace from "@/components/pages/Profile/NameSpace";
+import Introduction from "@/components/pages/Profile/Introduction";
+import Biography from "@/components/pages/Profile/Biography";
+import UnreleasedAlbumList from "@/components/pages/Profile/UnreleasedAlbumList";
 
 interface PostPageProps {
   params: { category: string; id: string };
 }
 
-const ProfilePage = ({ params }: PostPageProps) => {
-  const button = "p-1 px-4 rounded-lg text-white";
-  const [nowPlaying, setNowPlaying] = useState(playlist[0]);
-  const [play, setPlay] = useState(false);
+export const basicButtonStyle = "p-1 px-4 rounded-lg text-white";
 
+const ProfilePage = ({ params }: PostPageProps) => {
   const [photoSrc, setPhotoSrc] = useState(photo[0]);
 
   return (
     <div className="w-[100vw] h-[100vh]  pt-[64px] flex justify-center">
       <SEO title={params.id} />
       <div className="w-[1000px] mt-5 ">
-        <div className=" relative">
-          <div className="bg-yellow-400 w-full h-[300px] rounded-lg" />
-          <div className="absolute rounded-full bg-green-400 w-[120px] h-[120px] top-[240px] left-[40px]"></div>
-        </div>
-        <div className="h-[80px] p-5">
-          <div className="flex justify-end items-center">
-            <button className={`bg-green-500 mr-2 ${button}`}>관심사 +</button>
-            <button className={`bg-blue-400 mr-2 ${button}`}>후원하기</button>
-            <button className={`bg-red-400 ${button}`}>공유하기</button>
-          </div>
-        </div>
-        <div className="px-[40px]">
-          <h1 className="font-bold text-3xl">김개똥</h1>
-          <div className="mt-4">
-            <span className={`${button} mr-2 bg-green-500`}>GUITAR</span>
-            <span className={`${button} mr-2 bg-blue-500`}>VOCAL</span>
-            <span className={`${button} mr-2 bg-red-500`}>JAZZ</span>
-            <span className={`${button} mr-2 bg-cyan-500`}>POP</span>
-          </div>
-        </div>
-        <div className="px-[40px] mt-10">
-          <h2 className="text-2xl font-bold mb-4">Introduction</h2>
-          <div className="leading-6">
-            뉴올리언스의 열기와 뉴욕의 세련됨을 담은 재즈 피아니스트입니다.
-            20년간의 클럽 연주와 10장의 앨범을 통해 전통 재즈의 현대적 해석을
-            선보여 왔습니다. 즉흥 연주의 짜릿함과 감성적 멜로디의 조화를
-            추구하며, 관객과 호흡하는 라이브 무대에서 가장 빛을 발합니다.
-          </div>
-        </div>
-
-        <div className="px-[40px] mt-10">
-          <h2 className="text-2xl font-bold mb-4">Biography</h2>
-          <div className="flex items-center mb-2">
-            <span className="w-[10px] h-[10px] rounded-full bg-blue-400 border-[4px] border-blue-500" />
-            <span className="w-[80px] h-[2px] bg-blue-300 mr-2" />
-            <div>1993.09.16 출생</div>
-          </div>
-          <div className="flex items-center mb-2">
-            <span className="w-[10px] h-[10px] rounded-full bg-blue-400 border-[4px] border-blue-500" />
-            <span className="w-[80px] h-[2px] bg-blue-300 mr-2" />
-            <div>2012.02. 고등학교 졸업</div>
-          </div>
-          <div className="flex items-center">
-            <span className="w-[10px] h-[10px] rounded-full bg-blue-400 border-[4px] border-blue-500" />
-            <span className="w-[80px] h-[2px] bg-blue-300 mr-2" />
-            <div>2023.11. 개발자 취업</div>
-          </div>
-        </div>
-
+        <ProfileHeader />
+        <NameSpace />
+        <Introduction />
+        <Biography />
         <ReleasedAlbumList />
-
-        <div className="px-[40px] mt-10">
-          <h2 className="text-2xl font-bold mb-4">Unreleased Album</h2>
-          <div className="flex items-center justify-between p-4 rounded-xl bg-blue-100">
-            <div className="flex items-center">
-              <div
-                className={`w-[80px] h-[80px] rounded-xl mr-6 ${nowPlaying.albumJacket}`}
-              />
-              <div className="">
-                <div className="font-bold">{nowPlaying.title}</div>
-                <div className="text-gray-500">{nowPlaying.artist}</div>
-              </div>
-            </div>
-            <div>
-              <Waveform url={nowPlaying.url} setPlay={setPlay} play={play} />
-            </div>
-          </div>
-        </div>
-
-        <ul className="px-[40px] mt-5">
-          {playlist.map((item) => {
-            const isNowPlaying = item.id === nowPlaying.id;
-            const buttonStyle = isNowPlaying ? "bg-red-400" : "bg-blue-500";
-            return (
-              <li
-                key={item.title}
-                className="flex justify-between items-center mb-2"
-              >
-                <div className="flex items-center">
-                  <div
-                    className={`w-[60px] h-[60px] mr-4 ${item.albumJacket}`}
-                  />
-                  <div>
-                    <h3>{item.title}</h3>
-                    <h4 className="text-gray-500">{item.artist}</h4>
-                  </div>
-                </div>
-                <button
-                  className={`h-[40px] px-3 text-white rounded-xl ${buttonStyle}`}
-                  onClick={() => {
-                    setPlay(true);
-                    setNowPlaying(item);
-                  }}
-                >
-                  {isNowPlaying ? "재생 중" : "지금 재생"}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        <UnreleasedAlbumList />
 
         <div className="px-[40px] mt-10">
           <h2 className="text-2xl font-bold mb-4">Photo Album</h2>

@@ -75,7 +75,7 @@ export default function Waveform({ url, setPlay, play }: Props) {
       <div className="controls">
         <div
           onClick={handlePlayPause}
-          className="ml-8 flex justify-center items-center text-2xl rounded-full w-[60px] h-[60px] bg-blue-600 text-white"
+          className="ml-8 flex justify-center items-center text-2xl rounded-full w-[60px] h-[60px] bg-blue-600 text-white cursor-pointer"
         >
           {play ? <FaStop /> : <FaPlay />}
         </div>
