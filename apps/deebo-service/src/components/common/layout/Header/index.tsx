@@ -7,10 +7,13 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className="fixed w-full h-[64px] flex  justify-between items-center px-5 bg-blue-800 text-white font-medium">
+    <div className="fixed w-full h-[64px] flex z-[9999] justify-between items-center px-5 bg-blue-800 text-white font-medium">
       <h1 className="text-3xl font-bold text-white">Deebo</h1>
       <ul>
-        <li className="cursor-pointer" onClick={() => signOut()}>
+        <li
+          className="cursor-pointer"
+          onClick={() => signOut({ callbackUrl: "/" })}
+        >
           {session.data !== null && "로그아웃"}
         </li>
         <li className="cursor-pointer" onClick={() => router.push("/")}>
