@@ -24,7 +24,7 @@ const ReleasedAlbum = ({ album }: Props) => {
       <div className="mr-8 w-[180px]" style={{ boxSizing: "border-box" }}>
         <div className="relative">
           {newCondition && (
-            <span className="absolute bg-red-600 p-1 px-2 rounded-xl text-white top-2 left-2">
+            <span className="absolute bg-blue-600 shadow-md p-1 px-2 rounded-xl text-white top-2 left-2">
               New
             </span>
           )}
