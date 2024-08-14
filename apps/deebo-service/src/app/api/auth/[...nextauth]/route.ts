@@ -1,6 +1,15 @@
 import { createClient } from "@supabase/supabase-js";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
+interface CustomUser extends NextAuthUser {
+  nickname?: string;
+  type?: string;
+  gender?: string;
+  birthday?: string;
+  supabaseAccessToken?: string;
+  supabaseRefreshToken?: string;
+}
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -33,14 +42,13 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        console.log(data);
-
         return {
           id: data.user.id,
           email: data.user.email,
           nickname: data.user.user_metadata?.nickname,
           type: data.user.user_metadata?.type,
-          // Supabase 세션 토큰을 NextAuth 세션에 포함
+          gender: data.user.user_metadata?.gender,
+          birthday: data.user.user_metadata?.birthday,
           supabaseAccessToken: data.session?.access_token,
           supabaseRefreshToken: data.session?.refresh_token,
         };
@@ -50,15 +58,29 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.supabaseAccessToken = user.supabaseAccessToken;
-        token.supabaseRefreshToken = user.supabaseRefreshToken;
+        const customUser = user as CustomUser;
+        token.id = customUser.id;
+        token.email = customUser.email;
+        token.nickname = customUser.nickname;
+        token.type = customUser.type;
+        token.gender = customUser.gender;
+        token.birthday = customUser.birthday;
+        token.supabaseAccessToken = customUser.supabaseAccessToken;
+        token.supabaseRefreshToken = customUser.supabaseRefreshToken;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.supabaseAccessToken = token.supabaseAccessToken;
-        session.user.supabaseRefreshToken = token.supabaseRefreshToken;
+        session.user.id = token.id as string;
+        session.user.email = token.email as string;
+        session.user.nickname = token.nickname as string;
+        session.user.type = token.type as string;
+        session.user.gender = token.gender as string;
+        session.user.birthday = token.birthday as string;
+        session.user.supabaseAccessToken = token.supabaseAccessToken as string;
+        session.user.supabaseRefreshToken =
+          token.supabaseRefreshToken as string;
       }
       return session;
     },
