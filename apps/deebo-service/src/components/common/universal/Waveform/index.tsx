@@ -17,8 +17,8 @@ interface Props {
 const formWaveSurferOptions = (ref: any) => ({
   container: ref,
   waveColor: "#aaa",
-  progressColor: "SkyBlue",
-  cursorColor: "SkyBlue",
+  progressColor: "#45B1E8",
+  cursorColor: "#45B1E8",
   barWidth: 3,
   barRadius: 3,
   responsive: true,
@@ -75,9 +75,9 @@ export default function Waveform({ url, setPlay, play }: Props) {
       <div className="controls">
         <div
           onClick={handlePlayPause}
-          className="ml-8 flex justify-center items-center text-2xl rounded-full w-[60px] h-[60px] bg-blue-600 text-white cursor-pointer"
+          className="ml-8 flex justify-center items-center text-2xl rounded-full w-[60px] h-[60px] bg-blue-500 text-white cursor-pointer"
         >
-          {play ? <FaStop /> : <FaPlay />}
+          <div className="">{play ? <FaStop /> : <FaPlay />}</div>
         </div>
       </div>
     </div>

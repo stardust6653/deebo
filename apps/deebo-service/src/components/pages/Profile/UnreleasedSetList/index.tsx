@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { UnreleasedAlbumType } from "../NowPlaying";
+import Lottie from "lottie-react";
+import equlizer from "@/lotties/equlizer.json";
 
 interface Props {
   data: UnreleasedAlbumType[];
@@ -17,8 +19,9 @@ const UnreleasedSetList = ({
   setNowPlaying,
 }: Props) => {
   return (
-    <ul className="px-[40px] mt-5">
-      {data.map((item) => {
+    <ul className="p-[10px] mt-2  mx-[40px]">
+      <p className="font-bold mb-2 border-bottom">재생목록</p>
+      {data.map((item: UnreleasedAlbumType) => {
         const isNowPlaying = item.id === nowPlaying.id;
         const buttonStyle = isNowPlaying ? "bg-red-400" : "bg-blue-500";
         return (
@@ -37,13 +40,22 @@ const UnreleasedSetList = ({
               </div>
             </div>
             <button
-              className={`h-[40px] px-3 text-white rounded-xl ${buttonStyle}`}
+              className={`h-[32px] px-3 text-white rounded-xl ${buttonStyle}`}
               onClick={() => {
                 setPlay(true);
                 setNowPlaying(item);
               }}
             >
-              {isNowPlaying ? "재생 중" : "지금 재생"}
+              <div className="flex">
+                {isNowPlaying && (
+                  <Lottie
+                    animationData={equlizer}
+                    loop
+                    className="w-[16px] mr-1 text-white"
+                  />
+                )}
+                {isNowPlaying ? "재생 중" : "지금 재생"}
+              </div>
             </button>
           </li>
         );

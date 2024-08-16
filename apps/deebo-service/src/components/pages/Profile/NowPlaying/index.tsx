@@ -17,16 +17,16 @@ interface Props {
 
 const NowPlaying = ({ data, setPlay, play }: Props) => {
   return (
-    <div className="flex items-center justify-between p-4 rounded-xl bg-blue-100">
+    <div className="flex items-center justify-between p-4 rounded-xl bg-blue-200">
       <div className="flex items-center">
         <img
           src={data?.albumJacket}
           alt=""
           className={`w-[80px] h-[80px] rounded-xl mr-6`}
         />
-        <div className="">
-          <div className="font-bold">{data.title}</div>
-          <div className="text-gray-500">{data.artist}</div>
+        <div className="w-[140px] overflow-hidden">
+          <div className="truncate font-bold text-blue-950">{data.title}</div>
+          <div className="truncate text-blue-950">{data.artist}</div>
         </div>
       </div>
       <div>
