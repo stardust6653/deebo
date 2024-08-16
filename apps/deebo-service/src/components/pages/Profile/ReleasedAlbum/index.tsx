@@ -21,14 +21,14 @@ const ReleasedAlbum = ({ album }: Props) => {
 
   return (
     <Link href={album.ottSiteLink} target="_blank">
-      <div className="mr-8 w-[180px]" style={{ boxSizing: "border-box" }}>
+      <div className="w-[180px]" style={{ boxSizing: "border-box" }}>
         <div className="relative">
           {newCondition && (
             <span className="absolute bg-blue-600 shadow-md p-1 px-2 rounded-xl text-white top-2 left-2">
               New
             </span>
           )}
-          <img src={album.coverUrl} className="rounded-lg" />
+          <img src={album.coverUrl} className="rounded-lg" alt="" />
         </div>
         <div className="px-1">
           <div className="mt-2 font-medium">{album.title}</div>

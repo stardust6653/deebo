@@ -66,7 +66,11 @@ const ReleasedAlbumList = () => {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {sortedAlbumList.map((album) => {
-            return <ReleasedAlbum album={album} key={album.id} />;
+            return (
+              <div key={album.id} className="mr-8 last:mr-0">
+                <ReleasedAlbum album={album} />
+              </div>
+            );
           })}
         </div>
       </HorizontalScrollContainer>
