@@ -34,7 +34,6 @@ const UnreleasedSetList = ({
   return (
     <div>
       <p className="px-[50px] font-bold mt-4 border-bottom ">재생목록</p>
-
       <ul
         ref={elementRef}
         className="relative p-[10px] mx-[40px] h-[240px] overflow-scroll scrollbar-hide "
@@ -80,7 +79,7 @@ const UnreleasedSetList = ({
         })}
       </ul>
 
-      {!isElementBottom && (
+      {data.length > 3 && !isElementBottom && (
         <div className="absolute bottom-[-60px] left-0 right-0 flex justify-center">
           <button
             onClick={scrollToBottom}
