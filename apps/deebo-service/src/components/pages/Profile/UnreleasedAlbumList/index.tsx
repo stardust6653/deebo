@@ -58,4 +58,36 @@ const playlist = [
     albumJacket:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEYxRlJcY22sFAbV_N-ZviXJflYyOLOsLZyQ&usqp=CAU",
   },
+  {
+    id: "5",
+    title: "대충 노래 5",
+    artist: "김개똥",
+    url: "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3",
+    albumJacket:
+      "https://cdn.mhns.co.kr/news/photo/201711/87284_144151_4835.jpg",
+  },
+  {
+    id: "6",
+    title: "대충 노래 6",
+    artist: "김개똥 & 김똥개",
+    url: "https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3",
+    albumJacket:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEYxRlJcY22sFAbV_N-ZviXJflYyOLOsLZyQ&usqp=CAU",
+  },
+  {
+    id: "7",
+    title: "대충 노래 7",
+    artist: "김개똥",
+    url: "https://www.mfiles.co.uk/mp3-downloads/brahms-st-anthony-chorale-theme-two-pianos.mp3",
+    albumJacket:
+      "https://cdn.mhns.co.kr/news/photo/201711/87284_144151_4835.jpg",
+  },
+  {
+    id: "8",
+    title: "대충 노래 8",
+    artist: "김개똥 & 김똥개",
+    url: "https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3",
+    albumJacket:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEYxRlJcY22sFAbV_N-ZviXJflYyOLOsLZyQ&usqp=CAU",
+  },
 ];
