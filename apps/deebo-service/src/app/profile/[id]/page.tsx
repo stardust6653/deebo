@@ -18,6 +18,7 @@ import Introduction from "@/components/pages/Profile/Introduction";
 import Biography from "@/components/pages/Profile/Biography";
 import UnreleasedAlbumList from "@/components/pages/Profile/UnreleasedAlbumList";
 import PhotoAlbum from "@/components/pages/Profile/PhotoAlbum";
+import NewsCardList from "@/components/pages/Profile/NewsCardList";
 
 interface PostPageProps {
   params: { category: string; id: string };
@@ -38,13 +39,7 @@ const ProfilePage = ({ params }: PostPageProps) => {
         <UnreleasedAlbumList />
         <PhotoAlbum />
         <YouTubeAlbum playList={youtubePlaylist} />
-
-        <div className="px-[40px] mt-10">
-          <h2 className="text-2xl font-bold mb-4">Press</h2>
-          <NewsCard url="https://www.newsis.com/view/NISX20240809_0002844968" />
-          <NewsCard url="https://isplus.com/article/view/isp202408060038" />
-          <NewsCard url="https://www.edaily.co.kr/news/read?newsId=01656406638984368&mediaCodeNo=258" />
-        </div>
+        <NewsCardList />
       </div>
     </div>
   );
