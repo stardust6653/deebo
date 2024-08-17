@@ -18,7 +18,7 @@ const YouTubeAlbum = ({ playList }: Props) => {
       <h2 className="text-2xl font-bold mb-4">YouTube Album</h2>
       <div className="flex flex-col">
         <div className="w-full ">
-          <YouTubePreview videoId={mainVideoId} />
+          <YouTubePreview videoId={mainVideoId} type="video" />
         </div>
 
         <div className="w-full ">
@@ -36,7 +36,7 @@ const YouTubeAlbum = ({ playList }: Props) => {
                 </div>
                 <div className="relative">
                   <div className="inset-0 w-[100px] h-full pointer-events-none">
-                    <YouTubePreview videoId={video.videoId} />
+                    <YouTubePreview videoId={video.videoId} type="playlist" />
                   </div>
                 </div>
               </li>
