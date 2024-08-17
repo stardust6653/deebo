@@ -35,7 +35,10 @@ const NameSpace = () => {
 
       <div className="mt-4">
         {nameSpaceData.tags.map((tag, index) => (
-          <span className={`${basicButtonStyle} mr-2 ${colorList[index]}`}>
+          <span
+            key={tag}
+            className={`${basicButtonStyle} mr-2 ${colorList[index]}`}
+          >
             {tag}
           </span>
         ))}

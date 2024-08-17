@@ -51,6 +51,7 @@ const ProfileHeader = () => {
         <div className="flex justify-end items-center">
           {buttonList.map((button, index) => (
             <button
+              key={index}
               className={`${buttonColor[index].bgColor} ${buttonColor[index].hoverColor} ml-2 ${basicButtonStyle}`}
             >
               {button.text}

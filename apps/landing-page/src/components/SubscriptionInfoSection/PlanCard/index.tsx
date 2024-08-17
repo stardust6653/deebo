@@ -45,8 +45,10 @@ const PlanCard = ({
           <p className="border-b-black border mt-4" />
           <div>
             <ul className="mt-4 leading-8">
-              {features.map((feature: string) => (
-                <li className="text-black">{feature}</li>
+              {features.map((feature: string, index: number) => (
+                <li key={index} className="text-black">
+                  {feature}
+                </li>
               ))}
             </ul>
           </div>
