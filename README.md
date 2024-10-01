@@ -1,81 +1,59 @@
-# Turborepo starter
+# [예술인 프로필 플랫폼] Deebo
 
-This is an official starter Turborepo.
+# Deebo란?
 
-## Using this example
+Deebo는 Deep Ocean의 발음에서 파생된 네이밍입니다. 깊은 바다처럼 거대한 생태계를 이루고 있는 예술계를 의미하며 거대한 바닷 속처럼 예술계에는 사람들에게 알려지지 않은 신비로운 아티스트가 여전히 많아 Deebo 라는 이름이 선정되었습니다.
 
-Run the following command:
+디보의 캐치프레이즈는 “Deeper, Wider. 예술가를 담아내는 곳, 디보.” 이며, 많은 아티스트들의 프로필을 담아 더 확장된 예술계를 만드는 것을 목표로 합니다.
 
-```sh
-npx create-turbo@latest
-```
+# Deebo 기획
 
-## What's inside?
+디보와 관련된 자세한 내용은 아래의 문서에서 확인 가능합니다.
 
-This Turborepo includes the following packages/apps:
+[Deebo 기획 문서](https://superficial-jump-4e9.notion.site/Deebo-9fb5fb5af80944e58a808355ad398c9f?pvs=4)
 
-### Apps and Packages
+[프로젝트 개요 및 기능](https://www.notion.so/c0b6bfb1416a4cca833417326127f860?pvs=21)
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+[시장 조사](https://www.notion.so/d476faf92a64407db2bf6a760b5088d0?pvs=21)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+[디자인 기획](https://www.notion.so/85183e2512fb4944997465baa346aae2?pvs=21)
 
-### Utilities
+[요구사항 명세서](https://www.notion.so/b06a41ac05c3441c8226fc2f1409b2e0?pvs=21)
 
-This Turborepo has some additional tools already setup for you:
+[기술스택](https://www.notion.so/373e3be6ca7d41309a176caf491af61b?pvs=21)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
-### Build
+---
 
-To build all apps and packages, run the following command:
+# 프로젝트 개요
 
-```
-cd my-turborepo
-pnpm build
-```
+## 프로젝트 시작 동기
 
-### Develop
+주변 음악가 지인들이 PR을 위해 인스타그램, 유튜브, 사운드클라우드 등 여러 플랫폼을 관리하며 그 링크들을 하나의 링크로 공유해주는 서비스인 링크트리, 리틀리 등을 활용하는 것을 보고 링크가 아닌 그 내용 까지 한 곳에 담을 수는 없을까? 라는 고민에서 서비스를 기획하게 되었습니다.
 
-To develop all apps and packages, run the following command:
+## 기존 해외 서비스의 문제
 
-```
-cd my-turborepo
-pnpm dev
-```
+해외에는 BandZoogle과 같이 음악인을 위해 개인화된 사이트를 제작해주는 서비스들이 있으나, 사용법이 복잡하고 구독을 해야 서비스를 이용할 수 있어 사용하기 쉬운 무료 EPK를 원하는 국내 아티스트들의 요구와는 맞지 않았습니다.
 
-### Remote Caching
+## 프로젝트를 통해 이루고자 하는 효과
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+국내 인디뮤지션들의 자기 홍보 매체 부재에 주목하고 새로운 EPK(Electric Press Kit) 플랫폼을 통해 아티스트에게는 무료의 PR 매체를 제공하고 팬 또는 음악 산업 관계자들과의 소통을 강화할 수 있도록 하여, 인디 음악 등 국내 예술계 전반의 정보 소통 부재를 해결할 수 있도록 합니다. 또한 궁극적으로는 아티스트에게 직접적인 후원을 손쉽게 만들고 앨범/굿즈 등의 물품 판매 중개 수수료의 부담을 줄여 아티스트들의 수익성 강화를 가져와 생태계 개선을 이끌어 낼 수 있도록 합니다.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+---
 
-```
-cd my-turborepo
-npx turbo login
-```
+# 서비스
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### 로그인 페이지
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+![스크린샷 2024-10-01 오후 8 16 02](https://github.com/user-attachments/assets/7417dd5a-f5b9-4f4e-9f7b-e199f5348fb3)
 
-```
-npx turbo link
-```
+### 프로필 페이지
 
-## Useful Links
+![스크린샷 2024-10-01 오후 8 16 54](https://github.com/user-attachments/assets/d756e757-e6e7-45b3-a444-58c1f0a8a53e)
+![스크린샷 2024-10-01 오후 8 17 06](https://github.com/user-attachments/assets/6815564f-3846-4045-8f39-04a96b631f19)
+![스크린샷 2024-10-01 오후 8 17 15](https://github.com/user-attachments/assets/97f0ea8d-0a70-4898-b2ff-1e16301a4536)
+![스크린샷 2024-10-01 오후 8 17 31](https://github.com/user-attachments/assets/7d595015-efcf-44f5-aaf3-6bddadd00bdd)
 
-Learn more about the power of Turborepo:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+
